@@ -2,14 +2,14 @@
 
 ![](https://aliyunsdk-pages.alicdn.com/icons/AlibabaCloud.svg)
 
-# Ant Chain BCCR SDK for PHP
+# Ant Chain ABC SDK for PHP
 
 ## 安装
 
 ### Composer
 
 ```bash
-composer require antchain/bccr
+composer require antchain/BCCR
 ```
 
 ## 问题
