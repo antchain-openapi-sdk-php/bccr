@@ -27,6 +27,8 @@ use AntChain\BCCR\Models\QueryapplyformsealurlCopyrightregistrationDigitalregist
 use AntChain\BCCR\Models\QueryapplyformsealurlCopyrightregistrationDigitalregistrationResponse;
 use AntChain\BCCR\Models\CompleteapplyformsealCopyrightregistrationDigitalregistrationRequest;
 use AntChain\BCCR\Models\CompleteapplyformsealCopyrightregistrationDigitalregistrationResponse;
+use AntChain\BCCR\Models\ReturnbackRegistrationRequest;
+use AntChain\BCCR\Models\ReturnbackRegistrationResponse;
 use AntChain\BCCR\Models\GetUploadurlRequest;
 use AntChain\BCCR\Models\GetUploadurlResponse;
 use AntChain\BCCR\Models\AddHashregisterRequest;
@@ -359,7 +361,7 @@ class Client {
                     "req_msg_id" => UtilClient::getNonce(),
                     "access_key" => $this->_accessKeyId,
                     "base_sdk_version" => "TeaSDK-2.0",
-                    "sdk_version" => "1.21.6",
+                    "sdk_version" => "1.21.9",
                     "_prod_code" => "BCCR",
                     "_prod_channel" => "undefined"
                 ];
@@ -577,6 +579,31 @@ class Client {
     public function completeapplyformsealCopyrightregistrationDigitalregistrationEx($request, $headers, $runtime){
         Utils::validateModel($request);
         return CompleteapplyformsealCopyrightregistrationDigitalregistrationResponse::fromMap($this->doRequest("1.0", "blockchain.bccr.copyrightregistration.digitalregistration.completeapplyformseal", "HTTPS", "POST", "/gateway.do", Tea::merge($request), $headers, $runtime));
+    }
+
+    /**
+     * Description: 版保中心拒绝退费回调接口
+     * Summary: 版保中心拒绝退费回调接口
+     * @param ReturnbackRegistrationRequest $request
+     * @return ReturnbackRegistrationResponse
+     */
+    public function returnbackRegistration($request){
+        $runtime = new RuntimeOptions([]);
+        $headers = [];
+        return $this->returnbackRegistrationEx($request, $headers, $runtime);
+    }
+
+    /**
+     * Description: 版保中心拒绝退费回调接口
+     * Summary: 版保中心拒绝退费回调接口
+     * @param ReturnbackRegistrationRequest $request
+     * @param string[] $headers
+     * @param RuntimeOptions $runtime
+     * @return ReturnbackRegistrationResponse
+     */
+    public function returnbackRegistrationEx($request, $headers, $runtime){
+        Utils::validateModel($request);
+        return ReturnbackRegistrationResponse::fromMap($this->doRequest("1.0", "blockchain.bccr.registration.returnback", "HTTPS", "POST", "/gateway.do", Tea::merge($request), $headers, $runtime));
     }
 
     /**
