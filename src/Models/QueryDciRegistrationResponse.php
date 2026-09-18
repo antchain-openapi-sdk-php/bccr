@@ -36,7 +36,6 @@ class QueryDciRegistrationResponse extends Model {
         'amendType' => 'amend_type',
         'applyFormUrl' => 'apply_form_url',
         'flowNumber' => 'flow_number',
-        'refundRejectInfo' => 'refund_reject_info',
     ];
     public function validate() {
         Model::validatePattern('applyRegisterTime', $this->applyRegisterTime, '\\d{4}[-]\\d{1,2}[-]\\d{1,2}[T]\\d{2}:\\d{2}:\\d{2}([Z]|([\\.]\\d{1,9})?[\\+]\\d{2}[\\:]?\\d{2})');
@@ -131,9 +130,6 @@ class QueryDciRegistrationResponse extends Model {
         }
         if (null !== $this->flowNumber) {
             $res['flow_number'] = $this->flowNumber;
-        }
-        if (null !== $this->refundRejectInfo) {
-            $res['refund_reject_info'] = $this->refundRejectInfo;
         }
         return $res;
     }
@@ -233,9 +229,6 @@ class QueryDciRegistrationResponse extends Model {
         }
         if(isset($map['flow_number'])){
             $model->flowNumber = $map['flow_number'];
-        }
-        if(isset($map['refund_reject_info'])){
-            $model->refundRejectInfo = $map['refund_reject_info'];
         }
         return $model;
     }
@@ -412,11 +405,5 @@ class QueryDciRegistrationResponse extends Model {
      * @var string
      */
     public $flowNumber;
-
-    // 数登拒绝退费理由
-    /**
-     * @var string
-     */
-    public $refundRejectInfo;
 
 }
